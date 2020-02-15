@@ -1,0 +1,11 @@
+C:\Users\Талгат\source\repos\Homework1.3\Homework1.3\bin\Debug\netcoreapp3.1\Homework1.3.exe
+C:\Users\Талгат\source\repos\Homework1.3\Homework1.3\bin\Debug\netcoreapp3.1\Homework1.3.deps.json
+C:\Users\Талгат\source\repos\Homework1.3\Homework1.3\bin\Debug\netcoreapp3.1\Homework1.3.runtimeconfig.json
+C:\Users\Талгат\source\repos\Homework1.3\Homework1.3\bin\Debug\netcoreapp3.1\Homework1.3.runtimeconfig.dev.json
+C:\Users\Талгат\source\repos\Homework1.3\Homework1.3\bin\Debug\netcoreapp3.1\Homework1.3.dll
+C:\Users\Талгат\source\repos\Homework1.3\Homework1.3\bin\Debug\netcoreapp3.1\Homework1.3.pdb
+C:\Users\Талгат\source\repos\Homework1.3\Homework1.3\obj\Debug\netcoreapp3.1\Homework1.3.csprojAssemblyReference.cache
+C:\Users\Талгат\source\repos\Homework1.3\Homework1.3\obj\Debug\netcoreapp3.1\Homework1.3.AssemblyInfoInputs.cache
+C:\Users\Талгат\source\repos\Homework1.3\Homework1.3\obj\Debug\netcoreapp3.1\Homework1.3.AssemblyInfo.cs
+C:\Users\Талгат\source\repos\Homework1.3\Homework1.3\obj\Debug\netcoreapp3.1\Homework1.3.dll
+C:\Users\Талгат\source\repos\Homework1.3\Homework1.3\obj\Debug\netcoreapp3.1\Homework1.3.pdb
