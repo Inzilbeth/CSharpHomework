@@ -1,0 +1,11 @@
+C:\Users\Талгат\Desktop\Task5\Task5\obj\Debug\netcoreapp3.1\Task5.csprojAssemblyReference.cache
+C:\Users\Талгат\Desktop\Task5\Task5\obj\Debug\netcoreapp3.1\Task5.AssemblyInfoInputs.cache
+C:\Users\Талгат\Desktop\Task5\Task5\obj\Debug\netcoreapp3.1\Task5.AssemblyInfo.cs
+C:\Users\Талгат\Desktop\Task5\Task5\bin\Debug\netcoreapp3.1\Task5.exe
+C:\Users\Талгат\Desktop\Task5\Task5\bin\Debug\netcoreapp3.1\Task5.deps.json
+C:\Users\Талгат\Desktop\Task5\Task5\bin\Debug\netcoreapp3.1\Task5.runtimeconfig.json
+C:\Users\Талгат\Desktop\Task5\Task5\bin\Debug\netcoreapp3.1\Task5.runtimeconfig.dev.json
+C:\Users\Талгат\Desktop\Task5\Task5\bin\Debug\netcoreapp3.1\Task5.dll
+C:\Users\Талгат\Desktop\Task5\Task5\bin\Debug\netcoreapp3.1\Task5.pdb
+C:\Users\Талгат\Desktop\Task5\Task5\obj\Debug\netcoreapp3.1\Task5.dll
+C:\Users\Талгат\Desktop\Task5\Task5\obj\Debug\netcoreapp3.1\Task5.pdb
