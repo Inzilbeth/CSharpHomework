@@ -17,7 +17,9 @@ namespace Homework1._2
         }
         static void Main(string[] args)
         {
-            Console.WriteLine("#7 Fibonachi number is {0}", Fibonachi(7));
+            Console.Write("Enter value: ");
+            int number = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine($"#{number} Fibonachi number is {Fibonachi(number)}") ;
         }
     }
 }
