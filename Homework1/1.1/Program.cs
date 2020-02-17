@@ -6,6 +6,7 @@ namespace Homework1._1
     {
         private static int Factorial(int n)
             => n <= 1 ? 1 : n * Factorial(n - 1);
+			
         static void Main(string[] args)
         {
             Console.Write("Enter value: ");
