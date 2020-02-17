@@ -8,7 +8,9 @@ namespace Homework1._1
             => n <= 1 ? 1 : n * Factorial(n - 1);
         static void Main(string[] args)
         {
-            Console.WriteLine($"Factorial of 7 is: {Factorial(7)}");
+            Console.Write("Enter value: ");
+            int number = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine($"Factorial of {number} is {Factorial(number)}");
         }
     }
 }
