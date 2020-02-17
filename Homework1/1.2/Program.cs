@@ -15,6 +15,7 @@ namespace Homework1._2
                 return Fibonachi(n - 1) + Fibonachi(n - 2);
             }
         }
+		
         static void Main(string[] args)
         {
             Console.Write("Enter value: ");
