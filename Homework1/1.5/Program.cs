@@ -8,6 +8,11 @@ namespace Task5
         {
             Console.WriteLine("Enter the size of the array: ");
             int size = Convert.ToInt32(Console.ReadLine());
+            if(size<=0)
+            {
+                Console.WriteLine("Entered value is inappropriate!");
+                return;
+            }
             int[,] arrayToSort = new int[size, size];
             Random rand = new Random();
             for (int i = 0; i < size; i++)
