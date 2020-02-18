@@ -4,10 +4,10 @@ namespace Homework1._3
 {
     class Program
     {   
-        private static void ArraySort(ref int[] array, int size)
+        private static void ArraySort(int[] array)
         {
-            for (int i = 0; i < size; i++)
-                for (int j = 0; j < size - 1; j++)
+            for (int i = 0; i < array.Length; i++)
+                for (int j = 0; j < array.Length - 1; j++)
                 {
                     if (array[j] > array[j + 1])
                     {
@@ -21,24 +21,26 @@ namespace Homework1._3
         static int Main(string[] args)
         {
             Console.Write("Enter the size of the random array: ");
-            int array_size = Convert.ToInt32(Console.ReadLine());
-            if(array_size<=0)
+            int arraySize = Convert.ToInt32(Console.ReadLine());
+            if (arraySize <= 0)
             {
                 Console.WriteLine("Entered value is inappropriate!");
                 return 1;
             }
-            int[] random_array = new int[array_size];
+            int[] randomArray = new int[arraySize];
             Console.WriteLine("Your random array is: ");
-            Random rand = new Random();
-            for (int i = 0; i < random_array.Length; i++)
+            var rand = new Random();
+            for (int i = 0; i < randomArray.Length; i++)
             {
-                random_array[i] = rand.Next(0, array_size);
-                Console.Write($"{random_array[i]} ");
+                randomArray[i] = rand.Next(0, arraySize);
+                Console.Write($"{randomArray[i]} ");
             }
-            ArraySort(ref random_array, array_size);
+            ArraySort(randomArray);
             Console.WriteLine("\nYour sorted random array is: ");
-            for (int i = 0; i < random_array.Length; i++)
-                Console.Write("{0} ", random_array[i]);
+            for (int i = 0; i < randomArray.Length; i++)
+            {
+                Console.Write("{0} ", randomArray[i]);
+            }
             return 0;
         }
     }
