@@ -4,6 +4,20 @@ namespace Homework1._3
 {
     class Program
     {   
+        private static void ArraySort(ref int[] array, int size)
+        {
+            for (int i = 0; i < size; i++)
+                for (int j = 0; j < size - 1; j++)
+                {
+                    if (array[j] > array[j + 1])
+                    {
+                        int tempVar = array[j];
+                        array[j] = array[j + 1];
+                        array[j + 1] = tempVar;
+                    }
+                } 
+        }
+
         static void Main(string[] args)
         {
             Console.Write("Enter the size of the random array: ");
@@ -16,7 +30,7 @@ namespace Homework1._3
                 random_array[i] = rand.Next(0, array_size);
                 Console.Write($"{random_array[i]} ");
             }
-            Array.Sort(random_array);
+            ArraySort(ref random_array, array_size);
             Console.WriteLine("\nYour sorted random array is: ");
             for (int i = 0; i < random_array.Length; i++)
                 Console.Write("{0} ", random_array[i]);
