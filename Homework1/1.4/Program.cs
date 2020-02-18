@@ -97,6 +97,11 @@ namespace Task4
         {
             Console.WriteLine("Enter the array size: ");
             int size = Convert.ToInt32(Console.ReadLine());
+            if(size<=0)
+            {
+                Console.WriteLine("Entered value is inappropriate!");
+                return;
+            }
             int[,] array = GetArray(size);
             Console.WriteLine("Your array is: ");
             for (int i = 0; i < size; i++)
