@@ -23,18 +23,18 @@ namespace Task4
             return array;
         }
 
-        static void spiralOutput(int[,] array, int size)
+        static void spiralOutput(int[,] array)
         {
-            bool detector = false; //truе -> выполнение закончится
-            int flag = 0; //Отвечает за изменение длины похода по направлению (1>1>2>2>3>3...)
+            bool detector = false; // truе -> выполнение закончится
+            int flag = 0; // Отвечает за изменение длины похода по направлению (1>1>2>2>3>3...)
             int moveSize = 0;
             char moveDirection = 'u';
-            int steps = 0; //Счетчик шагов
-            int i = size / 2;
-            int j = size / 2;
+            int steps = 0; // Счетчик шагов
+            int i = array.Length/4 - 1;
+            int j = array.Length/4 - 1;
             Console.WriteLine("Spiral output of your array is: ");
             Console.Write(array[i, j] + " ");
-            while (steps < size * size)
+            while (steps < (array.Length - 1))
             {
                 if (detector) { break; }
                 if (flag % 2 == 0) { moveSize++; }
@@ -45,7 +45,7 @@ namespace Task4
                         i--;
                         Console.Write(array[i, j] + " ");
                         steps++;
-                        if (steps == size * size - 1) { detector = true; break; }
+                        if (steps == array.Length - 1) { detector = true; break; }
                     }
                     moveDirection = 'l';
                     flag++;
@@ -58,7 +58,7 @@ namespace Task4
                         j--;
                         Console.Write(array[i, j] + " ");
                         steps++;
-                        if (steps == size * size - 1) { detector = true; break; }
+                        if (steps == array.Length - 1) { detector = true; break; }
                     }
                     moveDirection = 'd';
                     flag++;
@@ -71,7 +71,7 @@ namespace Task4
                         i++;
                         Console.Write(array[i, j] + " ");
                         steps++;
-                        if (steps == size * size - 1) { detector = true; break; }
+                        if (steps == array.Length - 1) { detector = true; break; }
                     }
                     moveDirection = 'r';
                     flag++;
@@ -84,7 +84,7 @@ namespace Task4
                         j++;
                         Console.Write(array[i, j] + " ");
                         steps++;
-                        if (steps == size * size - 1) { detector = true; break; }
+                        if (steps == array.Length - 1) { detector = true; break; }
                     }
                     moveDirection = 'u';
                     flag++;
@@ -97,12 +97,13 @@ namespace Task4
         {
             Console.WriteLine("Enter the array size: ");
             int size = Convert.ToInt32(Console.ReadLine());
-            if(size<=0)
+            if (size<=0)
             {
                 Console.WriteLine("Entered value is inappropriate!");
                 return;
             }
             int[,] array = GetArray(size);
+            Console.WriteLine(array.Length);
             Console.WriteLine("Your array is: ");
             for (int i = 0; i < size; i++)
             {
@@ -110,7 +111,7 @@ namespace Task4
                     Console.Write($"{array[i, j]} ");
                 Console.Write(Environment.NewLine);
             }
-            spiralOutput(array, size);
+            spiralOutput(array);
         }
     }
 }
