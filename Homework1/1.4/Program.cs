@@ -25,11 +25,14 @@ namespace Task4
 
         static void spiralOutput(int[,] array)
         {
-            bool detector = false; // truе -> выполнение закончится
-            int flag = 0; // Отвечает за изменение длины похода по направлению (1>1>2>2>3>3...)
+            // При truе выполнение закончится.
+            bool detector = false;
+            // Отвечает за изменение длины похода по направлению.
+            int flag = 0;
             int moveSize = 0;
             char moveDirection = 'u';
-            int steps = 0; // Счетчик шагов
+            // Счетчик шагов.
+            int steps = 0; 
             int i = array.Length/4 - 1;
             int j = array.Length/4 - 1;
             Console.WriteLine("Spiral output of your array is: ");
