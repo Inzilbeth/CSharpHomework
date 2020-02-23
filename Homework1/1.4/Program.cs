@@ -6,90 +6,113 @@ namespace Task4
 {
     class Program
     {
-        static int[,] GetArray(int n)
+        private static int[,] GetArray(int n)
         {
-            string[] line_array;
+            string[] lineArray;
             int[,] array = new int[n, n];
             Console.WriteLine("Enter the elements of the array, separating them with spaces:");
             for (int i = 0; i < n; i++)
             {
                 Console.WriteLine($"Enter row {i + 1} of the array: ");
-                line_array = Console.ReadLine().Split(' ');
+                lineArray = Console.ReadLine().Split(' ');
                 for (int j = 0; j < n; j++)
                 {
-                    array[i, j] = Convert.ToInt32(line_array[j]);
+                    array[i, j] = Convert.ToInt32(lineArray[j]);
                 }
             }
             return array;
         }
 
-        static void spiralOutput(int[,] array)
+        public enum MoveDirection { Up = 1, Left = 2, Down = 3, Right = 4 };
+
+        private static void SpiralOutput(int[,] array)
         {
-            // При truе выполнение закончится.
-            bool detector = false;
+            bool isFinished = false;
             // Отвечает за изменение длины похода по направлению.
             int flag = 0;
             int moveSize = 0;
-            char moveDirection = 'u';
+            MoveDirection direction = MoveDirection.Up;
             // Счетчик шагов.
             int steps = 0; 
-            int i = array.Length/4 - 1;
-            int j = array.Length/4 - 1;
+            int i = (Convert.ToInt32(Math.Sqrt(array.Length))/2);
+            int j = (Convert.ToInt32(Math.Sqrt(array.Length))/2);
             Console.WriteLine("Spiral output of your array is: ");
-            Console.Write(array[i, j] + " ");
+            Console.Write($"{array[i, j]} ");
             while (steps < (array.Length - 1))
             {
-                if (detector) { break; }
-                if (flag % 2 == 0) { moveSize++; }
-                if (moveDirection == 'u')
+                if (isFinished) 
+                { 
+                    break; 
+                }
+                if (flag % 2 == 0) 
+                {
+                    moveSize++; 
+                }
+                if (direction == MoveDirection.Up)
                 {
                     for (int t = 0; t < moveSize; t++)
                     {
                         i--;
-                        Console.Write(array[i, j] + " ");
+                        Console.Write($"{array[i, j]} ");
                         steps++;
-                        if (steps == array.Length - 1) { detector = true; break; }
+                        if (steps == array.Length - 1) 
+                        { 
+                            isFinished = true; 
+                            break;
+                        }
                     }
-                    moveDirection = 'l';
+                    direction++;
                     flag++;
                     continue;
                 }
-                if (moveDirection == 'l')
+                if (direction == MoveDirection.Left)
                 {
                     for (int t = 0; t < moveSize; t++)
                     {
                         j--;
-                        Console.Write(array[i, j] + " ");
+                        Console.Write($"{array[i, j]} ");
                         steps++;
-                        if (steps == array.Length - 1) { detector = true; break; }
+                        if (steps == array.Length - 1) 
+                        { 
+                            isFinished = true; 
+                            break; 
+                        }
                     }
-                    moveDirection = 'd';
+                    direction++;
                     flag++;
                     continue;
                 }
-                if (moveDirection == 'd')
+                if (direction == MoveDirection.Down)
                 {
                     for (int t = 0; t < moveSize; t++)
                     {
                         i++;
-                        Console.Write(array[i, j] + " ");
+                        Console.Write($"{array[i, j]} ");
                         steps++;
-                        if (steps == array.Length - 1) { detector = true; break; }
+                        if (steps == array.Length - 1) 
+                        { 
+                            isFinished = true; 
+                            break; 
+                        }
                     }
-                    moveDirection = 'r';
+                    direction++;
                     flag++;
                     continue;
                 }
-                if (moveDirection == 'r')
+                if (direction == MoveDirection.Right)
                 {
                     for (int t = 0; t < moveSize; t++)
                     {
                         j++;
-                        Console.Write(array[i, j] + " ");
+                        Console.Write($"{array[i, j]} ");
                         steps++;
-                        if (steps == array.Length - 1) { detector = true; break; }
+                        if (steps == array.Length - 1) 
+                        {
+                            isFinished = true; 
+                            break; 
+                        }
                     }
-                    moveDirection = 'u';
+                    direction = MoveDirection.Up;
                     flag++;
                     continue;
                 }
@@ -114,7 +137,7 @@ namespace Task4
                     Console.Write($"{array[i, j]} ");
                 Console.Write(Environment.NewLine);
             }
-            spiralOutput(array);
+            SpiralOutput(array);
         }
     }
 }
