@@ -8,6 +8,16 @@ namespace Task1
     // Односвязный список.
     public class LinkedList<T> : IEnumerable<T>
     {
+        private class Node<T>
+        {
+            public Node(T data)
+            {
+                Data = data;
+            }
+            public T Data { get; set; }
+            public Node<T> Next { get; set; }
+        }
+
         // Головной/первый элемент.
         private Node<T> head;
 
