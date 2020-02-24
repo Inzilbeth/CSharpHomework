@@ -48,9 +48,9 @@ namespace Task1
         // Добавление элемента по номеру.
         public void AddByNumber(int number, T data)
         {
-            if (number > count + 1)
+            if (number > count + 1 || number < 0)
             {
-                Console.WriteLine("Entered value exceeds list size + 1!");
+                Console.WriteLine("Entered value is inappropriate!");
                 return;
             }
 
@@ -129,9 +129,9 @@ namespace Task1
         // Удаление элемента по номеру.
         public bool RemoveByNumber(int number)
         {
-            if (number > count)
+            if (number > count || number < 0)
             {
-                Console.WriteLine("Entered value exceeds list size!");
+                Console.WriteLine("Entered value is inappropriate!");
                 return false;
             }
 
@@ -175,9 +175,9 @@ namespace Task1
         // Получение значения по номеру.
         public T GetValue(int number)
         {
-            if (number > count)
+            if (number > count || number < 0)
             {
-                Console.WriteLine("Entered value exceeds list size!");
+                Console.WriteLine("Entered value is inappropriate");
                 return default;
             }
 
@@ -194,9 +194,9 @@ namespace Task1
         // Установка значения по номеру.
         public bool SetValue(int number, T data)
         {
-            if (number > count)
+            if (number > count || number < 0)
             {
-                Console.WriteLine("Entered value exceeds list size!");
+                Console.WriteLine("Entered value is inappropriate!");
                 return false;
             }
 
