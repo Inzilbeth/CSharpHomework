@@ -8,13 +8,12 @@ namespace Task4
     {
         private static int[,] GetArray(int n)
         {
-            string[] lineArray;
             int[,] array = new int[n, n];
             Console.WriteLine("Enter the elements of the array, separating them with spaces:");
             for (int i = 0; i < n; i++)
             {
                 Console.WriteLine($"Enter row {i + 1} of the array: ");
-                lineArray = Console.ReadLine().Split(' ');
+                string[] lineArray = Console.ReadLine().Split(' ');
                 for (int j = 0; j < n; j++)
                 {
                     array[i, j] = Convert.ToInt32(lineArray[j]);
@@ -34,8 +33,8 @@ namespace Task4
             MoveDirection direction = MoveDirection.Up;
             // Счетчик шагов.
             int steps = 0; 
-            int i = (Convert.ToInt32(Math.Sqrt(array.Length))/2);
-            int j = (Convert.ToInt32(Math.Sqrt(array.Length))/2);
+            int i = (Convert.ToInt32(Math.Sqrt(array.Length)) / 2);
+            int j = (Convert.ToInt32(Math.Sqrt(array.Length)) / 2);
             Console.WriteLine("Spiral output of your array is: ");
             Console.Write($"{array[i, j]} ");
             while (steps < (array.Length - 1))
@@ -123,7 +122,7 @@ namespace Task4
         {
             Console.WriteLine("Enter the array size: ");
             int size = Convert.ToInt32(Console.ReadLine());
-            if (size<=0)
+            if (size <= 0)
             {
                 Console.WriteLine("Entered value is inappropriate!");
                 return;
@@ -134,7 +133,9 @@ namespace Task4
             for (int i = 0; i < size; i++)
             {
                 for (int j = 0; j < size; j++)
+                {
                     Console.Write($"{array[i, j]} ");
+                }
                 Console.Write(Environment.NewLine);
             }
             SpiralOutput(array);
