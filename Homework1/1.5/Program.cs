@@ -5,11 +5,14 @@ namespace Task5
 {
     class Program
     {
-        static void SwapColumns(int[,] array, int k, int j)
+        private static void SwapColumns(int[,] array, int j, int l)
         {
-            int temporaryVariable = array[k, j];
-            array[k, j] = array[k, j + 1];
-            array[k, j + 1] = temporaryVariable;
+            for (int k = 0; k < array.GetLength(1); k++)
+            {
+                int temporaryVariable = array[k, j];
+                array[k, j] = array[k, l];
+                array[k, l] = temporaryVariable;
+            }
         }
 
         static void Sort2DArrsColumns(int[,] array)
@@ -19,11 +22,8 @@ namespace Task5
                 for (int j = 0; j < array.GetLength(1) - 1; j++)
                 {
                     if (array[0, j] > array[0, j + 1])
-                    {
-                        for (int k = 0; k < array.GetLength(1); k++)
-                        {
-                            SwapColumns(array, k, j);
-                        }
+                    { 
+                        SwapColumns(array, j, j + 1);  
                     }
                 }
             }
