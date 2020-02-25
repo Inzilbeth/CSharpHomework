@@ -249,6 +249,7 @@ namespace Task2
                 while (!list.IsEmpty)
                 {
                     var value = list.GetData(1);
+                    list.RemoveByNumber(1);
                     tempList.AddByNumber(1, value);
                 }
             }
@@ -268,7 +269,7 @@ namespace Task2
             int result = 0;
             foreach (var symbol in data)
             {
-                result = (result + symbol) % size;
+                result = (result * 3 + symbol) % size;
             }
             return result;
         }
