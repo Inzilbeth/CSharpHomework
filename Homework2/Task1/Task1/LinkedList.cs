@@ -14,7 +14,9 @@ namespace Task1
             {
                 Data = data;
             }
+
             public T Data { get; set; }
+
             public Node<T> Next { get; set; }
         }
 
@@ -243,7 +245,7 @@ namespace Task1
         // Добвление в начало списка.
         public void AppendFirst(T data)
         {
-            Node<T> node = new Node<T>(data);
+            var node = new Node<T>(data);
             node.Next = head;
             head = node;
             if (count == 0)
@@ -254,10 +256,8 @@ namespace Task1
         }
 
         // Реализация интерфейса IEnumerable.
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return ((IEnumerable)this).GetEnumerator();
-        }
+        IEnumerator IEnumerable.GetEnumerator() =>
+            ((IEnumerable)this).GetEnumerator();
 
         IEnumerator<T> IEnumerable<T>.GetEnumerator()
         {
