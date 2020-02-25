@@ -20,6 +20,17 @@ namespace Task1
             public Node<T> Next { get; set; }
         }
 
+        // Присвоение элементу значения i-го элемента
+        private Node<T> GetNode(int number)
+        {
+            var tempNode = head;
+            for (int i = 1; i < number; i++)
+            {
+                tempNode = tempNode.Next;
+            }
+            return tempNode;
+        }
+
         // Головной/первый элемент.
         private Node<T> head;
 
@@ -183,13 +194,7 @@ namespace Task1
                 return default;
             }
 
-            var current = head;
-
-            for (int i = 1; i < number; i++)
-            {
-                current = current.Next;
-            }
-
+            var current = GetNode(number);
             return current.Data;
         }
 
@@ -202,12 +207,7 @@ namespace Task1
                 return false;
             }
 
-            var current = head;
-
-            for (int i = 1; i < number; i++)
-            {
-                current = current.Next;
-            }
+            var current = GetNode(number);
             current.Data = data;
             return true;
         }
