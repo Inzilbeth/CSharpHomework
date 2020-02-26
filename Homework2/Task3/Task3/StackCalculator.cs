@@ -9,17 +9,17 @@ namespace Task3
     {
         public enum StorageType { Array, List };
 
-        private static IStack<int> stack;
+        private static IStack<float> stack;
 
-        public static (bool, int) Calculate(string Expression, StorageType choice)
+        public static (bool, float) Calculate(string Expression, StorageType choice)
         {
             if (choice == StorageType.List)
             {
-                stack = new StackAsList<int>();
+                stack = new StackAsList<float>();
             }
             else
             {
-                stack = new StackAsArray<int>();
+                stack = new StackAsArray<float>();
             }
 
             var number = string.Empty;
@@ -34,7 +34,7 @@ namespace Task3
 
                 if (number.Length > 0)
                 {
-                    stack.Push(int.Parse(number));
+                    stack.Push(float.Parse(number));
                     number = string.Empty;
                     continue;
                 }
