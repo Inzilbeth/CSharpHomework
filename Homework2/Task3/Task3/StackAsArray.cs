@@ -57,8 +57,16 @@ namespace Task3
         }
 
         public T Peek()
-            => items[count - 1];
-
+        {
+            if (!IsEmpty())
+            {
+                return items[count - 1];
+            }
+            else
+            {
+                throw new InvalidOperationException("Stack is empty");
+            }
+        }
         private void Resize(int max)
         {
             T[] tempItems = new T[max];
@@ -74,6 +82,7 @@ namespace Task3
         public void Clear()
         {
             items = new T[n];
+            count = 0;
         }
 
         IEnumerator IEnumerable.GetEnumerator()

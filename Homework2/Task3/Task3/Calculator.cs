@@ -7,9 +7,12 @@ namespace Task3
 
     public class Calculator
     {
-        public static IStack<float> stack;
+        public Calculator(IStack<float> stack)
+            => this.stack = stack;
+        
+        private IStack<float> stack;
 
-        public static (bool, float) Calculate(string Expression)
+        public (bool, float) Calculate(string Expression)
         {
             var number = string.Empty;
 
@@ -78,7 +81,7 @@ namespace Task3
             return (false, 0);
         }
 
-        private static void PerformOperation(char operation)
+        private void PerformOperation(char operation)
         {
             var secondOperand = stack.Pop();
             var firstOperand = stack.Pop();

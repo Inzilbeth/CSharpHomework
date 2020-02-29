@@ -10,6 +10,7 @@ namespace Task3
             Console.WriteLine("Choose a storage type: \"0\" = List, \"1\" = Array");
             int choice;
             choice = Convert.ToInt32(Console.ReadLine());
+            IStack<float> stack;
             if (choice == 0)
             {
                 stack = new StackAsList<float>();
@@ -20,14 +21,14 @@ namespace Task3
             }
             else
             {
-                Console.WriteLine("You've entered a wrong value!");
+                throw new Exception("You've entered a wrong value!");
             }
-
+            var calculator = new Calculator(stack);
             while (true)
             {
                 Console.WriteLine("Enter postfix expression to calculate. ");
-                Console.WriteLine($"Result: {Calculator.Calculate(Console.ReadLine())}");
-                Console.WriteLine($"Result: {Calculator.Calculate(Console.ReadLine())}");
+                string expression = Console.ReadLine();
+                Console.WriteLine($"Result: {calculator.Calculate(expression)}");
             }
         } 
     }
