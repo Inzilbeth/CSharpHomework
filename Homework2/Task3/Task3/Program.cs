@@ -1,5 +1,5 @@
 ﻿using System;
-using static Task3.StackCalculator;
+using static Task3.Calculator;
 
 namespace Task3
 {
@@ -7,12 +7,27 @@ namespace Task3
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Choose a storage type: \"0\" = List, \"1\" = Array");
+            int choice;
+            choice = Convert.ToInt32(Console.ReadLine());
+            if (choice == 0)
+            {
+                stack = new StackAsList<float>();
+            }
+            else if (choice == 1)
+            {
+                stack = new StackAsArray<float>();
+            }
+            else
+            {
+                Console.WriteLine("You've entered a wrong value!");
+            }
+
             while (true)
             {
                 Console.WriteLine("Enter postfix expression to calculate. ");
-                Console.WriteLine("First expression will be calculated using list, another one - using array");
-                Console.WriteLine($"Result: {StackCalculator.Calculate(Console.ReadLine(), StorageType.List)}");
-                Console.WriteLine($"Result: {StackCalculator.Calculate(Console.ReadLine(), StorageType.Array)}");
+                Console.WriteLine($"Result: {Calculator.Calculate(Console.ReadLine())}");
+                Console.WriteLine($"Result: {Calculator.Calculate(Console.ReadLine())}");
             }
         } 
     }

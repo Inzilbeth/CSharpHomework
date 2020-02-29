@@ -4,7 +4,6 @@ using System.Collections;
 
 namespace Task3
 {
-
     public class StackAsList<T> : IStack<T>, IEnumerable<T>
     {
         private class Node<T>
@@ -30,7 +29,7 @@ namespace Task3
         
         public void Push(T item)
         {
-            Node<T> node = new Node<T>(item);
+            var node = new Node<T>(item);
             node.Next = head; 
             head = node;
             count++;

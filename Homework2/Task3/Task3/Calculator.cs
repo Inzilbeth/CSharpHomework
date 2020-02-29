@@ -5,23 +5,12 @@ using System.Text;
 namespace Task3
 {
 
-    public static class StackCalculator
+    public class Calculator
     {
-        public enum StorageType { Array, List };
+        public static IStack<float> stack;
 
-        private static IStack<float> stack;
-
-        public static (bool, float) Calculate(string Expression, StorageType choice)
+        public static (bool, float) Calculate(string Expression)
         {
-            if (choice == StorageType.List)
-            {
-                stack = new StackAsList<float>();
-            }
-            else
-            {
-                stack = new StackAsArray<float>();
-            }
-
             var number = string.Empty;
 
             foreach (char symbol in Expression)
@@ -60,7 +49,6 @@ namespace Task3
 
                             if (stack.IsEmpty() || (symbol == '/' && topValue == 0))
                             {
-                                Console.WriteLine("Division by zero occurred in the expression.");
                                 return (false, 0);
                             }
 

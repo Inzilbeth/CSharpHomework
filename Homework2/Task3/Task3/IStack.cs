@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Task3
 {
-    interface IStack<T>
+    public interface IStack<T>
     {
         bool IsEmpty();
 
