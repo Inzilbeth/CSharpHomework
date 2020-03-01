@@ -20,7 +20,7 @@ namespace Task1
             public Node<T> Next { get; set; }
         }
 
-        // Присвоение элементу значения i-го элемента
+        // Получение значения i-го элемента.
         private Node<T> GetNode(int number)
         {
             var tempNode = head;
