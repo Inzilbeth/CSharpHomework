@@ -5,10 +5,18 @@ using System.Linq;
 
 namespace Task2
 {
-    class HashTable
-    { 
+    public class HashTable
+    {
+        /// <summary>
+        /// Linked List.
+        /// </summary>
+        /// <typeparam Type = "T">Linked list's element type.</typeparam>
         public class LinkedList<T> : IEnumerable<T>
         {
+            /// <summary>
+            /// Linked list's element.
+            /// </summary>
+            /// <typeparam name="T">Type of data storaged within the element</typeparam>
             private class Node<T>
             {
                 public Node(T data)
@@ -19,16 +27,26 @@ namespace Task2
                 public Node<T> Next { get; set; }
             }
 
-            // Головной/первый элемент.
+            /// <summary>
+            /// Head( = first) element of the linked list.
+            /// </summary>
             private Node<T> head;
 
-            // Последний/хвостовой элемент.
+            /// <summary>
+            /// Tail( = last) element of the linked list.
+            /// </summary>
             private Node<T> tail;
 
-            // Количество элементов в списке.
+            /// <summary>
+            /// The amount of currently stored elements within a linked list.
+            /// </summary>
             private int count;
 
-            // Добавление элемента по номеру.
+            /// <summary>
+            /// Adds an element with the entered position and value to the linked list.
+            /// </summary>
+            /// <param name="number">Position where the element will be placed in the linked list.</param>
+            /// <param name="data">Information that will be stored within the element</param>
             public void AddByNumber(int number, T data)
             {
                 if (number > count + 1 || number < 0)
@@ -64,7 +82,11 @@ namespace Task2
                 count++;
             }
 
-            // Удаление элемента по значению.
+            /// <summary>
+            /// Adds an element with the entered value from the linked list.
+            /// </summary>
+            /// <param name="data">Data, element with which will be deleted from the linked list.</param>
+            /// <returns>Indicates whether the removal was successful.</returns>
             public bool RemoveByData(T data)
             {
                 var current = head;
@@ -74,14 +96,10 @@ namespace Task2
                 {
                     if (current.Data.Equals(data))
                     {
-                        // Если узел в середине или в конце:
                         if (previous != null)
                         {
-                            // Убираем узел current, теперь previous ссылается не на current, а на current.Next.
                             previous.Next = current.Next;
 
-                            // Если current.Next не установлен, значит узел последний,
-                            // изменяем переменную tail.
                             if (current.Next == null)
                             {
                                 tail = previous;
@@ -89,11 +107,8 @@ namespace Task2
                         }
                         else
                         {
-                            // Eсли удаляется первый элемент
-                            // переустанавливаем значение head.
                             head = head.Next;
 
-                            // Eсли после удаления список пуст, сбрасываем tail.
                             if (head == null)
                             {
                                 tail = null;
@@ -109,7 +124,11 @@ namespace Task2
                 return false;
             }
 
-            // Удаление элемента по номеру.
+            /// <summary>
+            /// Deletes an element from the selected position.
+            /// </summary>
+            /// <param name="number">Position of the element which will be deleted from the linked list.</param>
+            /// <returns>Indicates whether the removal was successful.</returns>
             public bool RemoveByNumber(int number)
             {
                 if (number > count || number < 0)
@@ -128,11 +147,8 @@ namespace Task2
                 }
                 if (previous != null)
                 {
-                    // Убираем узел current, теперь previous ссылается не на current, а на current.Next.
                     previous.Next = current.Next;
 
-                    // Если current.Next не установлен, значит узел последний,
-                    // изменяем переменную tail.
                     if (current.Next == null)
                     {
                         tail = previous;
@@ -140,11 +156,8 @@ namespace Task2
                 }
                 else
                 {
-                    // Eсли удаляется первый элемент
-                    // переустанавливаем значение head.
                     head = head.Next;
 
-                    // Eсли после удаления список пуст, сбрасываем tail.
                     if (head == null)
                     {
                         tail = null;
@@ -155,7 +168,11 @@ namespace Task2
                 return true;
             }
 
-            // Получение значения по номеру.
+            /// <summary>
+            /// Gets the data from the element with selected position.
+            /// </summary>
+            /// <param name="number">The position of the element which will be deleted from the linked list.</param>
+            /// <returns>Data from the element with selected position.</returns>
             public T GetData(int number)
             {
                 if (number > count || number < 0)
@@ -174,13 +191,21 @@ namespace Task2
                 return current.Data;
             }
 
-            // Количество элементов.
+            /// <summary>
+            /// Returns the current amount of elements within the linked list.
+            /// </summary>
+            /// <returns>Current amount of elements within a linked list.</returns>
             public int Count => count;
 
-            // Провекрка на пустоту.
+            /// <summary>
+            /// Checks whether the linked list is empty or not.
+            /// </summary>
+            /// <returns>Indicates whether the list is empty or not.</returns>
             public bool IsEmpty => count == 0;
 
-            // Очистка списка.
+            /// <summary>
+            /// Clears the linked list.
+            /// </summary>
             public void Clear()
             {
                 Console.WriteLine("Done!");
@@ -189,7 +214,11 @@ namespace Task2
                 count = 0;
             }
 
-            // Проверка на содержание списком элемента.
+            /// <summary>
+            /// Checks whether the linked list contains an element with selected data or not.
+            /// </summary>
+            /// <param name="data">Data which presence in the linked list will be checked.</param>
+            /// <returns>Indicates whether the selected data is present in the linked list.</returns>
             public bool Contains(T data)
             {
                 Node<T> current = head;
@@ -204,12 +233,17 @@ namespace Task2
                 return false;
             }
 
-            // Реализация интерфейса IEnumerable.
+            /// <summary>
+            /// Realiztion of IEnumerable interface.
+            /// </summary>
             IEnumerator IEnumerable.GetEnumerator()
             {
                 return ((IEnumerable)this).GetEnumerator();
             }
 
+            /// <summary>
+            /// Realiztion of IEnumerable interface.
+            /// </summary>
             IEnumerator<T> IEnumerable<T>.GetEnumerator()
             {
                 var current = head;
@@ -221,17 +255,38 @@ namespace Task2
             }
         }
 
+        /// <summary>
+        /// Size of the hash table.
+        /// </summary>
         private int size;
+
+        /// <summary>
+        /// Load factor (if > 1, forces a resize of the hash table).
+        /// </summary>
         private float loadFactor;
+
+        /// <summary>
+        /// Current amounts of elements within the hash table.
+        /// </summary>
         private int amountOfElements;
+
+        /// <summary>
+        /// Elements of the hash table.
+        /// </summary>
         private LinkedList<string>[] buckets;
 
+        /// <summary>
+        /// Hash table constructor.
+        /// </summary>
         public HashTable()
         {
             size = 10;
             InitializeBuckets();
         }
 
+        /// <summary>
+        /// Initializes buckets within the array.
+        /// </summary>
         private void InitializeBuckets()
         {
             buckets = new LinkedList<string>[size];
@@ -241,6 +296,9 @@ namespace Task2
             }
         }
 
+        /// <summary>
+        /// Doubles the size of a hash table.
+        /// </summary>
         private void ReSize()
         {
             var tempList = new LinkedList<string>();
@@ -264,6 +322,11 @@ namespace Task2
             }
         }
 
+        /// <summary>
+        /// Calculates the hash from the string.
+        /// </summary>
+        /// <param name="data">String from which hash will be calculated.</param>
+        /// <returns></returns>
         private int HashFunction(string data)
         {
             int result = 0;
@@ -274,12 +337,21 @@ namespace Task2
             return result;
         }
 
+
+        /// <summary>
+        /// Adds the hash of a string to the hash table.
+        /// </summary>
+        /// <param name="data">String which hash will be added to the hash table.</param>
         private void Add(string data)
         {
             var hash = HashFunction(data);
             buckets[hash].AddByNumber(1, data);
         }
 
+        /// <summary>
+        /// Adds the hash of a string to the hash table and resizes the hash table if needed.
+        /// </summary>
+        /// <param name="data">String which hash will be added to the hash table.</param>
         public void AddData(string data)
         {
             Add(data);
@@ -292,6 +364,11 @@ namespace Task2
             }
         }
 
+        /// <summary>
+        /// Deletes the selected string from the hash table.
+        /// </summary>
+        /// <param name="data">String which will be removed.</param>
+        /// <returns>Indicates whether removal was successful or not.</returns>
         public bool DeleteData(string data)
         {
             var hash = HashFunction(data);
@@ -304,12 +381,20 @@ namespace Task2
             return valueDeleted;
         }
 
+        /// <summary>
+        /// Checks whether the hash table has the selected string or not.
+        /// </summary>
+        /// <param name="data">String to check.</param>
+        /// <returns>Indicates whether the string is present in the hash table or not.</returns>
         public bool HashContains(string data)
         {
             var hash = HashFunction(data);
             return buckets[hash].Contains(data);
         }
 
+        /// <summary>
+        /// Clears the hash table.
+        /// </summary>
         public void Clear()
         {
             size = 10;
