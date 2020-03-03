@@ -35,7 +35,8 @@ namespace Task3
                 Resize(items.Length + 10);
             }
 
-            items[count++] = item;
+            items[count] = item;
+            count++;
         }
 
         public T Pop()
@@ -67,6 +68,7 @@ namespace Task3
                 throw new InvalidOperationException("Stack is empty");
             }
         }
+
         private void Resize(int max)
         {
             T[] tempItems = new T[max];

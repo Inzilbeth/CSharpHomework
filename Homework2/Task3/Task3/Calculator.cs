@@ -12,11 +12,11 @@ namespace Task3
         
         private IStack<float> stack;
 
-        public (bool, float) Calculate(string Expression)
+        public (bool, float) Calculate(string expression)
         {
             var number = string.Empty;
 
-            foreach (char symbol in Expression)
+            foreach (char symbol in expression)
             {
                 if (char.IsDigit(symbol))
                 {

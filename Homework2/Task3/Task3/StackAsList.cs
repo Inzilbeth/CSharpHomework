@@ -18,8 +18,8 @@ namespace Task3
             public Node<T> Next { get; set; }
         }
 
-        Node<T> head;
-        int count;
+        private Node<T> head;
+        private int count;
 
         public bool IsEmpty()
             => count == 0;

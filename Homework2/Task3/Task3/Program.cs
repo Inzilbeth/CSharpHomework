@@ -8,8 +8,7 @@ namespace Task3
         static void Main(string[] args)
         {
             Console.WriteLine("Choose a storage type: \"0\" = List, \"1\" = Array");
-            int choice;
-            choice = Convert.ToInt32(Console.ReadLine());
+            int choice = Convert.ToInt32(Console.ReadLine());
             IStack<float> stack;
             if (choice == 0)
             {
