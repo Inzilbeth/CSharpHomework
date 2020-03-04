@@ -4,8 +4,8 @@ using System.Text;
 
 namespace Task2
 {
-    class IHash
+    public interface IHash
     {
-
+        public int Hash(string data, int size);
     }
 }

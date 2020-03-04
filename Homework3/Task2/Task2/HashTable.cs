@@ -5,8 +5,16 @@ using System.Linq;
 
 namespace Task2
 {
+    /// <summary>
+    /// Implementation of the hash table.
+    /// </summary>
     public class HashTable
     {
+        /// <summary>
+        /// FillFactor exceeding this value leads to a resize.
+        /// </summary>
+        private const float MaxFillFactor = 1.2F;
+
         /// <summary>
         /// Linked List.
         /// </summary>
@@ -233,6 +241,25 @@ namespace Task2
                 return false;
             }
 
+            public string[] ReturnAllNodes()
+            {
+                var currentNode = head;
+
+                if (currentNode == null)
+                {
+                    throw new Exception("List is empty");
+                }
+
+                var allNodes = new string[count];
+                for (int i = 0; i < count; i++)
+                {
+                    allNodes[i] = Convert.ToString(currentNode.Data);
+                    currentNode = currentNode.Next;
+                }
+
+                return allNodes;
+            }
+
             /// <summary>
             /// Realiztion of IEnumerable interface.
             /// </summary>
@@ -271,17 +298,28 @@ namespace Task2
         private int amountOfElements;
 
         /// <summary>
+        /// Returns current amount of elements in the hash table.
+        /// </summary>
+        public int AmountOfElements => amountOfElements;
+
+        /// <summary>
         /// Elements of the hash table.
         /// </summary>
         private LinkedList<string>[] buckets;
 
         /// <summary>
+        /// Currently used type of hash function.
+        /// </summary>
+        private IHash hash;
+
+        /// <summary>
         /// Hash table constructor.
         /// </summary>
-        public HashTable()
+        public HashTable(IHash hash)
         {
             size = 10;
             InitializeBuckets();
+            this.hash = hash;
         }
 
         /// <summary>
@@ -299,44 +337,34 @@ namespace Task2
         /// <summary>
         /// Doubles the size of a hash table.
         /// </summary>
-        private void ReSize()
+        private void ReSize(int size)
         {
-            var tempList = new LinkedList<string>();
-            foreach (var list in buckets)
+            if (size <= 0)
             {
-                while (!list.IsEmpty)
+                throw new InvalidOperationException("Size < 0");
+            }
+            var tempTable = new LinkedList<string>[size];
+            for (int i = 0; i < tempTable.Length; i++)
+            {
+                tempTable[i] = new LinkedList<string>();
+            }
+
+            for (int i = 0; i < buckets.Length; i++)
+            {
+                if (buckets[i].IsEmpty)
                 {
-                    var value = list.GetData(1);
-                    list.RemoveByNumber(1);
-                    tempList.AddByNumber(1, value);
+                    continue;
+                }
+                var temporaryNodes = buckets[i].ReturnAllNodes();
+                foreach (var item in temporaryNodes)
+                {
+                    tempTable[hash.Hash(item, tempTable.Length)].AddByNumber(1, item);
                 }
             }
 
-            size *= 2;
-            InitializeBuckets();
-
-            while (!tempList.IsEmpty)
-            {
-                Add(tempList.GetData(1));
-                tempList.RemoveByNumber(1);
-            }
+            buckets = tempTable;
+            FillFactorCheck();
         }
-
-        /// <summary>
-        /// Calculates the hash from the string.
-        /// </summary>
-        /// <param name="data">String from which hash will be calculated.</param>
-        /// <returns></returns>
-        private int HashFunction(string data)
-        {
-            int result = 0;
-            foreach (var symbol in data)
-            {
-                result = (result * 3 + symbol) % size;
-            }
-            return result;
-        }
-
 
         /// <summary>
         /// Adds the hash of a string to the hash table.
@@ -344,8 +372,8 @@ namespace Task2
         /// <param name="data">String which hash will be added to the hash table.</param>
         private void Add(string data)
         {
-            var hash = HashFunction(data);
-            buckets[hash].AddByNumber(1, data);
+            var hashValue = hash.Hash(data, size);
+            buckets[hashValue].AddByNumber(1, data);
         }
 
         /// <summary>
@@ -358,9 +386,10 @@ namespace Task2
             amountOfElements++;
             loadFactor = (float)amountOfElements / size;
 
-            if (loadFactor > 1)
+            if (loadFactor > MaxFillFactor)
             {
-                ReSize();
+                size *= 2;
+                ReSize(size);
             }
         }
 
@@ -371,8 +400,8 @@ namespace Task2
         /// <returns>Indicates whether removal was successful or not.</returns>
         public bool DeleteData(string data)
         {
-            var hash = HashFunction(data);
-            var valueDeleted = buckets[hash].RemoveByData(data);
+            var hashValue = hash.Hash(data, size);
+            var valueDeleted = buckets[hashValue].RemoveByData(data);
             if (valueDeleted)
             {
                 amountOfElements--;
@@ -388,8 +417,8 @@ namespace Task2
         /// <returns>Indicates whether the string is present in the hash table or not.</returns>
         public bool HashContains(string data)
         {
-            var hash = HashFunction(data);
-            return buckets[hash].Contains(data);
+            var hashValue = hash.Hash(data, size);
+            return buckets[hashValue].Contains(data);
         }
 
         /// <summary>
@@ -401,6 +430,39 @@ namespace Task2
             amountOfElements = 0;
             loadFactor = 0;
             InitializeBuckets();
+        }
+
+        /// <summary>
+        /// Changes hash function.
+        /// </summary>
+        /// <param name="hash">Hash to be changed to.</param>
+        public void ChangeHashFunction(IHash hash)
+        {
+            this.hash = hash;
+            ReSize(size);
+        }
+
+        /// <summary>
+        /// Checks if a fill factor exceeds MaxFillFactor.
+        /// </summary>
+        private void FillFactorCheck()
+        {
+            if (amountOfElements / buckets.Length <= MaxFillFactor)
+            {
+                return;
+            }
+
+            ReSize(buckets.Length * 2);
+        }
+
+        /// <summary>
+        /// Calculates hash of the input string and returns it.
+        /// </summary>
+        /// <param name="data">Input string.</param>
+        /// <returns>hash value of input data</returns>
+        public int GetHash(string data)
+        {
+            return hash.Hash(data, size);
         }
     }
 }
