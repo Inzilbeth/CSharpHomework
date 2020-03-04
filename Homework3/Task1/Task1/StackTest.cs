@@ -3,32 +3,21 @@ using System;
 
 namespace Task3.Tests
 {
-    class ArrayTest
+    public class StackTest
     {
-        
-        private StackAsArray<float> stack;
 
-        [SetUp]
-        public void Setup()
-        {
-            stack = new StackAsArray<float>();
-        }
-
-        [Test]
-        public void TestEmptyStackOnEmptiness()
+        public void TestEmptyStackOnEmptiness(IStack<float> stack)
         {
             Assert.IsTrue(stack.IsEmpty());
         }
 
-        [Test]
-        public void TestFilledStackOnEmptiness()
+        public void TestFilledStackOnEmptiness(IStack<float> stack)
         {
             stack.Push(1);
             Assert.IsFalse(stack.IsEmpty());
         }
 
-        [Test]
-        public void TestEmptyStackOnEmptinessAfterPushAndPop()
+        public void TestEmptyStackOnEmptinessAfterPushAndPop(IStack<float> stack)
         {
             stack.Push(789);
             stack.Pop();
@@ -36,8 +25,7 @@ namespace Task3.Tests
             Assert.IsTrue(stack.IsEmpty());
         }
 
-        [Test]
-        public void TestPopWithoutPush()
+        public void TestPopWithoutPush(IStack<float> stack)
         {
             try
             {
@@ -49,8 +37,7 @@ namespace Task3.Tests
             }
         }
 
-        [Test]
-        public void IsEmptyTestPopTwiceAfterOnePop()
+        public void IsEmptyTestPopTwiceAfterOnePop(IStack<float> stack)
         {
             try
             {
@@ -64,23 +51,20 @@ namespace Task3.Tests
             }
         }
 
-        [Test]
-        public void ClearingAnEmptyStackTest()
+        public void ClearingAnEmptyStackTest(IStack<float> stack)
         {
             stack.Clear();
             Assert.IsTrue(stack.IsEmpty());
         }
 
-        [Test]
-        public void ClearFilledStack()
+        public void ClearFilledStack(IStack<float> stack)
         {
             stack.Push(8);
             stack.Clear();
             Assert.IsTrue(stack.IsEmpty());
         }
 
-        [Test]
-        public void PeekFromEmptyStack()
+        public void PeekFromEmptyStack(IStack<float> stack)
         {
             try
             {
@@ -92,8 +76,7 @@ namespace Task3.Tests
             }
         }
 
-        [Test]
-        public void PeekFromFilledStack()
+        public void PeekFromFilledStack(IStack<float> stack)
         {
             stack.Push(8);
             stack.Push(5);
