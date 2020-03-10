@@ -77,7 +77,7 @@ namespace Task2.Tests
             hashTable.ChangeHashFunction(finalFunction);
             int finalHash = hashTable.GetHash(data);
 
-            Assert.IsFalse(startingHash == finalHash);
+            Assert.AreNotEqual(startingHash, finalHash);
         }
 
     }

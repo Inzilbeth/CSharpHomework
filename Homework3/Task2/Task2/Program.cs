@@ -10,7 +10,7 @@ namespace Task2
             int choice = Convert.ToInt32(Console.ReadLine());
             if (choice == 0)
             {
-               var hash = new MD5();
+                var hash = new MD5();
                 return hash;
             }
             else if (choice == 1)
