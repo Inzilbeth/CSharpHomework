@@ -1,0 +1,10 @@
+image: Visual Studio 2019
+
+before_build:
+  - nuget restore D:\Git Repository\CSharpHomework\Homework4\Task1\hw4Task1.sln
+  
+build:
+  project: D:\Git Repository\CSharpHomework\Homework4\Task1\hw4Task1.sln
+  
+test_script:
+  - dotnet test D:\Git Repository\CSharpHomework\Homework4\Task1\hw4Task1.sln
