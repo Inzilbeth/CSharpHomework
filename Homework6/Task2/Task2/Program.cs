@@ -6,16 +6,17 @@ namespace Task2
     {
         static void Main(string[] args)
         {
-            var tmap = new Tilemap(@"C:\Users\Талгат\Desktop\map.txt");
-            tmap.Print();
-            tmap.MoveUp();
-            tmap.Print();
-            tmap.MoveUp();
-            tmap.Print();
-            tmap.MoveUp();
-            tmap.Print();
-            tmap.MoveRight();
-            tmap.Print();
+            var eventLoop = new EventLoop();
+            var controller = new CursorController(@"C:\Users\Талгат\Desktop\map.txt");
+
+            eventLoop.LeftHandler += controller.OnLeft;
+            eventLoop.RightHandler += controller.OnRight;
+            eventLoop.UpHandler += controller.OnUp;
+            eventLoop.DownHandler += controller.OnDown;
+
+            controller.Print();
+
+            eventLoop.Run();
         }
     }
 }
