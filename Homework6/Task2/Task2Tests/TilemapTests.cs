@@ -18,7 +18,7 @@ namespace Task2Tests
         {
             var rightmap = new char[3, 4];
             File.WriteAllText("map.txt", @"####
-#  #
+#@ #
 ####");
             tmap = new Tilemap(@"map.txt");
             
@@ -30,7 +30,7 @@ namespace Task2Tests
                 }
             }
 
-            rightmap[1, 1] = ' ';
+            rightmap[1, 1] = '@';
             rightmap[1, 2] = ' ';
 
             Assert.AreEqual(rightmap, tmap.Map);
