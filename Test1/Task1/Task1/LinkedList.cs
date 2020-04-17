@@ -235,6 +235,10 @@ namespace Task1
             return false;
         }
 
+        /// <summary>
+        /// Returns all the nodes as an array.
+        /// </summary>
+        /// <returns>An array of nodes within the list.</returns>
         public (T, int)[] ReturnAllNodes()
         {
             var currentNode = head;
@@ -255,7 +259,7 @@ namespace Task1
         }
 
         /// <summary>
-        /// Realiztion of IEnumerable interface.
+        /// Realization of IEnumerable interface.
         /// </summary>
         IEnumerator IEnumerable.GetEnumerator()
         {
