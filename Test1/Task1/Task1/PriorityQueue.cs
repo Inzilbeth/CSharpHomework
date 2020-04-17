@@ -36,6 +36,7 @@ namespace Task1
         {
             if(priorityQueue.IsEmpty)
             {
+                Console.WriteLine("Queue is empty");
                 throw new ArgumentException();
             }
 
