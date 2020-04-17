@@ -2,6 +2,9 @@
 
 namespace Task1
 {
+    /// <summary>
+    /// Demonstration of priorityQueue class.
+    /// </summary>
     class Program
     {
         static void Main(string[] args)
@@ -16,7 +19,7 @@ namespace Task1
 
             Console.WriteLine();
             
-            Console.WriteLine(pQueue.Dequeue());
+            Console.WriteLine($"deleted {pQueue.Dequeue()}");
             
             Console.WriteLine();
 
@@ -24,8 +27,9 @@ namespace Task1
 
             Console.WriteLine();
 
-            Console.WriteLine(pQueue.Dequeue());
-            
+            Console.WriteLine($"deleted {pQueue.Dequeue()}");
+
+
             Console.WriteLine();
 
             pQueue.Print();
