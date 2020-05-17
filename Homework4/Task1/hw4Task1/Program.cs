@@ -1,9 +1,6 @@
 ﻿using System;
 
-/// <summary>
-/// Gloobal namespace.
-/// </summary>
-namespace hw4Task1
+namespace Task1
 {
     class Program
     {
@@ -14,8 +11,9 @@ namespace hw4Task1
             {
                 writer.WriteLine("( * ( + 1 ( / 6 2) ) 7 )");
             }
+            System.IO.StreamReader reader = new System.IO.StreamReader(path);
 
-            var newtree = new Tree(path);
+            var newtree = new Tree(reader);
 
             Console.WriteLine(newtree.Calculate());
             newtree.Print();

@@ -1,7 +1,6 @@
-﻿/// <summary>
-/// Gloobal namespace.
-/// </summary>
-namespace hw4Task1
+﻿using System.IO;
+
+namespace Task1
 {
     /// <summary>
     /// Class with an implementation of the tree.
@@ -11,19 +10,17 @@ namespace hw4Task1
         private TreeNode tree;
 
         public void Print()
-        {
-            tree.Print();
-        }
+            => tree.Print();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Tree"/> class.
         /// </summary>
         /// <param name="fileName">Name of the file with correct string.</param>
         /// <exception cref="System.ArgumentException">Thrown when file has wrong name.</exception>
-        public Tree(string fileName)
+        public Tree(StreamReader stream)
         {
             var parser = new FileParser();
-            tree = parser.Parse(fileName);
+            tree = parser.Parse(stream);
         }
 
         /// <summary>
@@ -31,9 +28,7 @@ namespace hw4Task1
         /// </summary>
         /// <returns>Expression's result.</returns>
         public int Calculate()
-        {
-            return tree.Calculate().GetNumber();
-        }
+            => tree.Calculate().GetNumber();
 
         /// <summary>
         /// Class with an implementation of file parser.
@@ -45,27 +40,22 @@ namespace hw4Task1
             /// </summary>
             /// <param name="fileName">File name.</param>
             /// <returns>First tree node.</returns>
-            /// <exception cref="System.ArgumentException">Thrown when file name is inappropriate.</exception>
-            public TreeNode Parse(string fileName)
+            public TreeNode Parse(StreamReader stream)
             {
-                if (!System.IO.File.Exists(fileName))
-                {
-                    throw new System.ArgumentException("Wrong file name.");
-                }
-
-                using System.IO.StreamReader reader = System.IO.File.OpenText(fileName);
-                string fileString = reader.ReadToEnd();
+                string fileString = stream.ReadToEnd();
                 char[] separator = { '(', ')', ' ', '\n', '\r' };
                 return ParseNode(fileString.Split(separator));
             }
 
             private int index = 0;
+
             /// <summary>
-            /// Parses the node.
+            /// Parses the node from the input string array,
+            /// returning the correct type of node.
             /// </summary>
             /// <param name="splitString">Array of splitted strings.</param>
             /// <param name="index">Index.</param>
-            /// <returns></returns>
+            /// <returns>Correct node type.</returns>
             private TreeNode ParseNode(string[] splitString)
             {
                 if (index > splitString.Length - 1)

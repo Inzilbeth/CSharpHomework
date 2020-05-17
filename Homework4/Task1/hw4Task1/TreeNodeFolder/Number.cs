@@ -1,8 +1,9 @@
-﻿/// <summary>
-/// Gloobal namespace.
-/// </summary>
-namespace hw4Task1
+﻿namespace Task1
 {
+    /// <summary>
+    /// Implementation of Number class, that represents a number
+    /// in the expression.
+    /// </summary>
     public class Number : TreeNode
     {
         /// <summary>
@@ -24,25 +25,19 @@ namespace hw4Task1
         /// </summary>
         /// <returns>Number.</returns>
         public int GetNumber()
-        {
-            return number;
-        }
+            => number;
 
         /// <summary>
         /// Calculate result of the tree.
         /// </summary>
         /// <returns>Result value.</returns>
         public override Number Calculate()
-        {
-            return this;
-        }
+            => this;
 
         /// <summary>
         /// Print number function.
         /// </summary>
         public override void Print()
-        {
-            System.Console.Write(number);
-        }
+            => System.Console.Write(number);
     }
 }

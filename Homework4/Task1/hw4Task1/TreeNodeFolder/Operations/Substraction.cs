@@ -1,8 +1,8 @@
-﻿/// <summary>
-/// Gloobal namespace.
-/// </summary>
-namespace hw4Task1
+﻿namespace Task1
 {
+    /// <summary>
+    /// Substraction class.
+    /// </summary>
     public sealed class Substraction : Operation
     {
         /// <summary>

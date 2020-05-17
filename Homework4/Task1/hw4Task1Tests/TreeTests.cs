@@ -1,7 +1,7 @@
 using NUnit.Framework;
 using System;
 
-namespace hw4Task1
+namespace Task1
 {
     [TestFixture]
     public class TreeTests
@@ -19,8 +19,9 @@ namespace hw4Task1
             {
                 writer.WriteLine("( * ( + 1 ( / 6   2) ) 7 )");
             }
-
-            var tree = new Tree(path);
+            System.IO.StreamReader reader = new System.IO.StreamReader(path);
+            var tree = new Tree(reader);
+            reader.Close();
             Assert.AreEqual(28, tree.Calculate());
         }
 
@@ -32,17 +33,10 @@ namespace hw4Task1
             {
                 writer.WriteLine("100");
             }
-
-            var tree = new Tree(path);
+            System.IO.StreamReader reader = new System.IO.StreamReader(path);
+            var tree = new Tree(reader);
+            reader.Close();
             Assert.AreEqual(100, tree.Calculate());
-        }
-
-        [Test]
-        public void MustThrowExceptionOnWrongFileNameTest()
-        {
-            string path = "Nonexistant.txt";
-
-            Assert.Throws<System.ArgumentException>(() => new Tree(path));
         }
 
         [Test]
@@ -54,8 +48,12 @@ namespace hw4Task1
                 writer.WriteLine("( * ( - 1 ( / 20   0) ) 128 )");
             }
 
-            var tree = new Tree(path);
-            Assert.Throws<System.DivideByZeroException>(() => tree.Calculate());
+            System.IO.StreamReader reader = new System.IO.StreamReader(path);
+
+            var tree = new Tree(reader);
+            reader.Close();
+            System.IO.File.Delete(path);
+            Assert.Throws<DivideByZeroException>(() => tree.Calculate());
         }
     }
 }

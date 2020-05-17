@@ -1,7 +1,4 @@
-﻿/// <summary>
-/// Gloobal namespace.
-/// </summary>
-namespace hw4Task1
+﻿namespace Task1
 {
     /// <summary>
     /// Interface for tree nodes.

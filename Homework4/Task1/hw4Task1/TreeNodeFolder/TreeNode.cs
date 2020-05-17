@@ -1,7 +1,4 @@
-﻿/// <summary>
-/// Gloobal namespace.
-/// </summary>
-namespace hw4Task1
+﻿namespace Task1
 {
     /// <summary>
     /// Tree node class.
@@ -24,8 +21,6 @@ namespace hw4Task1
         /// </summary>
         /// <returns>Value.</returns>
         public Number GetValue()
-        {
-            return Calculate();
-        }
+            => Calculate();
     }
 }

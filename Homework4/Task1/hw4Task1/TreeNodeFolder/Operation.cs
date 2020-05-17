@@ -1,8 +1,8 @@
-﻿/// <summary>
-/// Gloobal namespace.
-/// </summary>
-namespace hw4Task1
+﻿namespace Task1
 {
+    /// <summary>
+    /// Operation class.
+    /// </summary>
     public abstract class Operation : TreeNode
     {
         /// <summary>
@@ -31,9 +31,7 @@ namespace hw4Task1
         /// </summary>
         /// <returns>Result.</returns>
         public override Number Calculate()
-        {
-            return Calculate(left.GetValue(), right.GetValue());
-        }
+            => Calculate(left.GetValue(), right.GetValue());
 
         /// <summary>
         /// Prints an expression.

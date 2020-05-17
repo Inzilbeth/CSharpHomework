@@ -1,8 +1,8 @@
-﻿/// <summary>
-/// Gloobal namespace.
-/// </summary>
-namespace hw4Task1
+﻿namespace Task1
 {
+    /// <summary>
+    /// Division class.
+    /// </summary>
     public sealed class Division : Operation
     {
         /// <summary>
