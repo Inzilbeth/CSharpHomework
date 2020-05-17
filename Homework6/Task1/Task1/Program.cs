@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Task1
+﻿namespace Task1
 {
     class Program
     {

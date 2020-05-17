@@ -1,12 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Task1
 {
-    public class Functions
+    /// <summary>
+    /// Class with the implementation of list modifying functions.
+    /// </summary>
+    public static class Functions
     {
-        public List<int> Map(List<int> list, Func<int, int> function)
+        /// <summary>
+        /// Applies a function to each element of the list.
+        /// </summary>
+        /// <param name="list">Input list.</param>
+        /// <param name="function">Function to be applied.</param>
+        /// <returns>Result.</returns>
+        public static List<int> Map(List<int> list, Func<int, int> function)
         {
             for (int i = 0; i < list.Count; i++)
             {
@@ -16,11 +24,18 @@ namespace Task1
             return list;
         }
 
-        public List<int> Filter(List<int> list, Func<int, bool> function)
+        /// <summary>
+        /// Filters the list returning the list only with the elements
+        /// that passed the filter.
+        /// </summary>
+        /// <param name="list">Input list.</param>
+        /// <param name="function">Function to be applied.</param>
+        /// <returns>Filtered list.</returns>
+        public static List<int> Filter(List<int> list, Func<int, bool> function)
         {
             for (int i = 0; i < list.Count; i++)
             {
-                if(!function(list[i]))
+                if (!function(list[i]))
                 {
                     list.RemoveAt(i);
                 }
@@ -29,7 +44,14 @@ namespace Task1
             return list;
         }
 
-        public int Fold(List<int> list, int startValue, Func<int, int, int> function)
+        /// <summary>
+        /// Accumulates the value prior to the input function.
+        /// </summary>
+        /// <param name="list">Input list.</param>
+        /// <param name="startValue">Starting value for the function.</param>
+        /// <param name="function">Input function.</param>
+        /// <returns>Result.</returns>
+        public static int Fold(List<int> list, int startValue, Func<int, int, int> function)
         {
             foreach (int el in list)
             {
@@ -38,6 +60,5 @@ namespace Task1
 
             return startValue;
         }
-
     }
 }
