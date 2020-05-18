@@ -1,12 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Task2
 {
+    /// <summary>
+    /// Class that provides control over the player's position 
+    /// and shows it on the screen.
+    /// </summary>
     class CursorController
     {
-        Tilemap tilemap;
+        private Tilemap tilemap;
 
         /// <summary>
         /// Default constructor.
@@ -28,8 +30,6 @@ namespace Task2
         /// <summary>
         /// Moves left.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="args"></param>
         public void OnLeft(object sender, EventArgs args)
         {
             Console.Clear();
@@ -40,8 +40,6 @@ namespace Task2
         /// <summary>
         /// Moves right.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="args"></param>
         public void OnRight(object sender, EventArgs args)
         {
             Console.Clear();
@@ -52,8 +50,6 @@ namespace Task2
         /// <summary>
         /// Moves up.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="args"></param>
         public void OnUp(object sender, EventArgs args)
         {
             Console.Clear();
@@ -64,8 +60,6 @@ namespace Task2
         /// <summary>
         /// Moves down.
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="args"></param>
         public void OnDown(object sender, EventArgs args)
         {
             Console.Clear();

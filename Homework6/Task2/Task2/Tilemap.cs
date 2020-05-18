@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.IO;
 
 namespace Task2
@@ -22,7 +20,7 @@ namespace Task2
         public char[,] Map
             => map;
 
-        (int, int) playerPosition;
+        (int, int) playerPosition = (-1, -1);
 
         /// <summary>
         /// Default constructor.
@@ -67,6 +65,11 @@ namespace Task2
                     }
                 }
             }
+
+            if(playerPosition == (-1, 1))
+            {
+                throw new ArgumentException("Wrong input file");
+            }
         }
 
         /// <summary>
@@ -76,13 +79,7 @@ namespace Task2
         /// <param name="y">Y coordiante</param>
         /// <returns>Whether the coordinates are within a map.</returns>
         public bool IsOnMap(int x, int y)
-        {
-            if (x < height - 1 && y < width - 1)
-            {
-                return true;
-            }
-            return false;
-        }
+            => (x < height - 1 && y < width - 1);
 
         /// <summary>
         /// Moves player right if possible.

@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.IO;
 
 namespace Task2
 {
@@ -7,7 +7,23 @@ namespace Task2
         static void Main(string[] args)
         {
             var eventLoop = new EventLoop();
-            var controller = new CursorController(@"C:\Users\Талгат\Desktop\map.txt");
+            using (StreamWriter sr = new StreamWriter("temp.txt"))
+            {
+                sr.Write(   @"#######################
+#                     #
+#             #       #
+#             #       #
+#   ##############    #
+#         #           #
+#   @     #           #
+#         #           #
+#                     #
+#######################");
+            }
+            
+            var controller = new CursorController(@"temp.txt");
+
+            File.Delete("temp.txt");
 
             eventLoop.LeftHandler += controller.OnLeft;
             eventLoop.RightHandler += controller.OnRight;

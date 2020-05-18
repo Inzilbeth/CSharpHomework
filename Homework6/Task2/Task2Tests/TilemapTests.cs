@@ -6,7 +6,7 @@ namespace Task2Tests
 {
     public class TilemapTests
     {
-        Tilemap tmap;
+        private Tilemap tmap;
 
         [SetUp]
         public void Setup()
@@ -28,24 +28,24 @@ namespace Task2Tests
         [Test]
         public void ConstructorTest()
         {
-            var rightmap = new char[3, 4];
+            var rightMap = new char[3, 4];
             File.WriteAllText("map.txt", @"####
 #@ #
 ####");
             tmap = new Tilemap(@"map.txt");
 
-            for (int i = 0; i < rightmap.GetLength(0); i++)
+            for (int i = 0; i < rightMap.GetLength(0); i++)
             {
-                for (int j = 0; j < rightmap.GetLength(1); j++)
+                for (int j = 0; j < rightMap.GetLength(1); j++)
                 {
-                    rightmap[i, j] = '#';
+                    rightMap[i, j] = '#';
                 }
             }
 
-            rightmap[1, 1] = '@';
-            rightmap[1, 2] = ' ';
+            rightMap[1, 1] = '@';
+            rightMap[1, 2] = ' ';
 
-            Assert.AreEqual(rightmap, tmap.Map);
+            Assert.AreEqual(rightMap, tmap.Map);
         }
 
         [Test]
@@ -72,7 +72,7 @@ namespace Task2Tests
                     }
                 }
             }
-            Assert.AreEqual(coords, correctCoords);
+            Assert.AreEqual(correctCoords, coords);
         }
 
         [Test]
@@ -91,7 +91,7 @@ namespace Task2Tests
                     }
                 }
             }
-            Assert.AreEqual(coords, correctCoords);
+            Assert.AreEqual(correctCoords, coords);
         }
 
         [Test]
@@ -110,7 +110,7 @@ namespace Task2Tests
                     }
                 }
             }
-            Assert.AreEqual(coords, correctCoords);
+            Assert.AreEqual(correctCoords, coords);
         }
 
         [Test]
@@ -129,7 +129,7 @@ namespace Task2Tests
                     }
                 }
             }
-            Assert.AreEqual(coords, correctCoords);
+            Assert.AreEqual(correctCoords, coords);
         }
     }
 }
