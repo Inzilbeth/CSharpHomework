@@ -27,6 +27,11 @@ namespace Forms
 
         public Controller(int size)
         {
+            if (size % 2 != 0 || size <= 0)
+            {
+                throw new ArgumentException("Wrong size");
+            }
+
             this.size = size;
             Initialize();
         }
