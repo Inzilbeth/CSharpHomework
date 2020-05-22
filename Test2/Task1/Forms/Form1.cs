@@ -9,11 +9,18 @@ using System.Windows.Forms;
 
 namespace Forms
 {
+    /// <summary>
+    /// Pairgame form.
+    /// </summary>
     public partial class PairForm : Form
     {
         private int size;
         private Controller controller;
 
+        /// <summary>
+        /// Constructor with size setting.
+        /// </summary>
+        /// <param name="size"></param>
         public PairForm(int size)
         {
             controller = new Controller(size);
@@ -22,6 +29,9 @@ namespace Forms
             InitializeButtons();
         }
 
+        /// <summary>
+        /// Initializes buttons on a form.
+        /// </summary>
         public void InitializeButtons()
         {
             for (int i = 0; i < size; ++i)
@@ -34,6 +44,9 @@ namespace Forms
             }
         }
 
+        /// <summary>
+        /// On button click event.
+        /// </summary>
         private void S_MouseClick(object sender, MouseEventArgs e)
         {
             int i = PointToClient(Cursor.Position).X / 40;

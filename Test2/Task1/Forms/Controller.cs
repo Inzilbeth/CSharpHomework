@@ -10,6 +10,9 @@ using System.Drawing;
 
 namespace Forms
 {
+    /// <summary>
+    /// Controls the button field.
+    /// </summary>
     public class Controller
     {
         private Random rand = new Random();
@@ -25,6 +28,10 @@ namespace Forms
         private int second = -1;
         private int currentlyChoosing = 0;
 
+        /// <summary>
+        /// Default constructor.
+        /// </summary>
+        /// <param name="size">Size of the array.</param>
         public Controller(int size)
         {
             if (size % 2 != 0 || size <= 0)
@@ -36,6 +43,9 @@ namespace Forms
             Initialize();
         }
 
+        /// <summary>
+        /// Initializes the buttons.
+        /// </summary>
         public void Initialize()
         {
             buttonArray = new Button[size, size];
@@ -78,6 +88,9 @@ namespace Forms
             }
         }
 
+        /// <summary>
+        /// Clicks on the button with (i, j) coordinates
+        /// </summary>
         public void Click(int i, int j)
         {
             switch (currentlyChoosing)
@@ -114,6 +127,10 @@ namespace Forms
             }
         }
 
+        /// <summary>
+        /// Checks if a player has won (checks if all the buttons are disabled).
+        /// </summary>
+        /// <returns></returns>
         public bool WinCheck()
         {
             foreach (var button in buttonArray)
