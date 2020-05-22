@@ -54,7 +54,7 @@ namespace Forms
                 }
             }
 
-            for (int i = 0; i < (size * size) / 2 - 1; ++i)
+            for (int i = 0; i < (size * size) / 2 ; ++i)
             {
                 for (int k = 0; k < 2; ++k)
                 {
