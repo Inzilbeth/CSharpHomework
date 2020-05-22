@@ -13,9 +13,12 @@ namespace Forms
         [STAThread]
         static void Main(string[] args)
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new PairForm(2));
+            if (args.Length == 1 && int.TryParse(args[0], out int size))
+            {
+                Application.EnableVisualStyles();
+                Application.SetCompatibleTextRenderingDefault(false);
+                Application.Run(new PairForm(size));
+            }
         }
     }
 }

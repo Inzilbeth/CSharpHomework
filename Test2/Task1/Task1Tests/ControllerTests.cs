@@ -30,6 +30,19 @@ namespace Forms
             }
         }
 
+
+        [TestMethod]
+        public void InitializationTestWithUnevenSize()
+        {
+            try
+            {
+                controller = new Controller(5);
+            }
+            catch (ArgumentException)
+            {
+            }
+        }
+
         [TestMethod]
         public void ClickTwiceOnTheSameButtonTest()
         {
@@ -97,6 +110,42 @@ namespace Forms
             }
 
             Assert.IsTrue(controller.WinCheck());
+        }
+
+        [TestMethod]
+        public void ButtonsShouldDisappearTest()
+        {
+            controller = new Controller(4);
+
+            controller.valueArray[0, 1] = 5;
+            controller.valueArray[2, 1] = 5;
+
+            Assert.IsTrue(controller.buttonArray[0, 1].Enabled);
+            Assert.IsTrue(controller.buttonArray[2, 1].Enabled);
+
+            controller.Click(0, 1);
+            controller.Click(2, 1);
+
+            Assert.IsFalse(controller.buttonArray[0, 1].Enabled);
+            Assert.IsFalse(controller.buttonArray[2, 1].Enabled);
+        }
+
+        [TestMethod]
+        public void ButtonsShouldNotDisappearTest()
+        {
+            controller = new Controller(4);
+
+            controller.valueArray[0, 1] = 10;
+            controller.valueArray[2, 1] = 5;
+
+            Assert.IsTrue(controller.buttonArray[0, 1].Enabled);
+            Assert.IsTrue(controller.buttonArray[2, 1].Enabled);
+
+            controller.Click(0, 1);
+            controller.Click(2, 1);
+
+            Assert.IsTrue(controller.buttonArray[0, 1].Enabled);
+            Assert.IsTrue(controller.buttonArray[2, 1].Enabled);
         }
     }
 }
