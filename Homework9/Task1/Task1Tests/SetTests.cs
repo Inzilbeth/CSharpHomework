@@ -86,7 +86,7 @@ namespace Task1
         {
             var array = new int[4];
             intSet.CopyTo(array, 0);
-            Assert.IsTrue(array.SequenceEqual(new int[4] { -10, 5, 19, 0 }));
+            Assert.AreEqual(new int[4] { -10, 0, 5, 19 }, array);
         }
 
         [Test]
