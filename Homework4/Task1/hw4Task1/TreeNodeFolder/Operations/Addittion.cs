@@ -16,12 +16,10 @@
         }
 
         /// <summary>
-        /// Prints an operation sign.
+        /// Returns an addittion sign.
         /// </summary>
-        protected override void PrintSign()
-        {
-            System.Console.Write("+");
-        }
+        protected override char GetSign()
+            => '+';
 
         /// <summary>
         /// Calculates expression.

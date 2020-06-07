@@ -39,18 +39,18 @@
         public override void Print()
         {
             System.Console.Write("( ");
-            this.PrintSign();
+            System.Console.Write(GetSign());
             System.Console.Write(" ");
-            this.left.Print();
+            left.Print();
             System.Console.Write(" ");
-            this.right.Print();
+            right.Print();
             System.Console.Write(" )");
         }
 
         /// <summary>
         /// Prints the right sign.
         /// </summary>
-        protected abstract void PrintSign();
+        protected abstract char GetSign();
 
         /// <summary>
         /// Calculates the expression.

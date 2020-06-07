@@ -1,58 +1,73 @@
 using NUnit.Framework;
 using System;
+using System.IO;
 
 namespace Task1
 {
     [TestFixture]
     public class TreeTests
     {
+        private string path;
+
         [SetUp]
         public void Setup()
         {
+            path = "TreeTest.txt";
         }
 
         [Test]
         public void CalculateSimpleExpressionTest()
         {
-            string path = "TreeTest.txt";
-            using (System.IO.StreamWriter writer = System.IO.File.CreateText(path))
+            Tree tree;
+
+            using (StreamWriter writer = File.CreateText(path))
             {
                 writer.WriteLine("( * ( + 1 ( / 6   2) ) 7 )");
             }
-            System.IO.StreamReader reader = new System.IO.StreamReader(path);
-            var tree = new Tree(reader);
-            reader.Close();
+
+            using (StreamReader reader = new StreamReader(path))
+            {
+                tree = new Tree(reader);
+            }
+
             Assert.AreEqual(28, tree.Calculate());
         }
 
         [Test]
         public void NoOperationsCalculationTest()
         {
-            string path = "TreeTest.txt";
-            using (System.IO.StreamWriter writer = System.IO.File.CreateText(path))
+            Tree tree;
+
+            using (StreamWriter writer = File.CreateText(path))
             {
                 writer.WriteLine("100");
             }
-            System.IO.StreamReader reader = new System.IO.StreamReader(path);
-            var tree = new Tree(reader);
-            reader.Close();
+
+            using (StreamReader reader = new StreamReader(path))
+            {
+                tree = new Tree(reader);
+            }
+
             Assert.AreEqual(100, tree.Calculate());
         }
 
         [Test]
         public void CalculateDivisionByZeroExpressionTest()
         {
-            string path = "TreeTest.txt";
-            using (System.IO.StreamWriter writer = System.IO.File.CreateText(path))
+            Tree tree;
+
+            using (StreamWriter writer = File.CreateText(path))
             {
                 writer.WriteLine("( * ( - 1 ( / 20   0) ) 128 )");
             }
 
-            System.IO.StreamReader reader = new System.IO.StreamReader(path);
+            using (StreamReader reader = new StreamReader(path))
+            {
+                tree = new Tree(reader);
+            }
 
-            var tree = new Tree(reader);
-            reader.Close();
-            System.IO.File.Delete(path);
+            File.Delete(path);
+
             Assert.Throws<DivideByZeroException>(() => tree.Calculate());
         }
     }

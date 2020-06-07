@@ -13,10 +13,10 @@ namespace Task1
             }
             System.IO.StreamReader reader = new System.IO.StreamReader(path);
 
-            var newtree = new Tree(reader);
+            var newTree = new Tree(reader);
 
-            Console.WriteLine(newtree.Calculate());
-            newtree.Print();
+            Console.WriteLine(newTree.Calculate());
+            newTree.Print();
         }
     }
 }

@@ -9,6 +9,9 @@ namespace Task1
     {
         private TreeNode tree;
 
+        /// <summary>
+        /// Prints the tree.
+        /// </summary>
         public void Print()
             => tree.Print();
 
@@ -54,7 +57,6 @@ namespace Task1
             /// returning the correct type of node.
             /// </summary>
             /// <param name="splitString">Array of splitted strings.</param>
-            /// <param name="index">Index.</param>
             /// <returns>Correct node type.</returns>
             private TreeNode ParseNode(string[] splitString)
             {
