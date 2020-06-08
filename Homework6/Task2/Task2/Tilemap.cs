@@ -83,7 +83,11 @@ namespace Task2
             => (x < height - 1 && y < width - 1);
 
         
-
+        /// <summary>
+        /// Helps to esaily move the player.
+        /// </summary>
+        /// <param name="x">x coordinate change.</param>
+        /// <param name="y">z coordinate change.</param>
         private void MoveHelper(int x, int y)
         {
             if (IsOnMap(playerPosition.Item1 + x, playerPosition.Item2 + y)

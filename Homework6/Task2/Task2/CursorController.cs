@@ -23,9 +23,7 @@ namespace Task2
         /// Prints the map.
         /// </summary>
         public void Print()
-        {
-            tilemap.Print();
-        }
+            => tilemap.Print();
 
         /// <summary>
         /// Moves left.
