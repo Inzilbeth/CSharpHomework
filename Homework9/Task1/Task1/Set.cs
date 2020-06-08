@@ -5,6 +5,10 @@ using System.Linq;
 
 namespace Task1
 {
+    /// <summary>
+    /// Well-defined collection of distinct objects.
+    /// </summary>
+    /// <typeparam name="T">Type of the stored elements.</typeparam>
     public class Set<T> : ISet<T>
     {
         private TreeNode root;
@@ -71,6 +75,9 @@ namespace Task1
             /// </summary>
             public TreeNode Parent { get; set; }
 
+            /// <summary>
+            /// Checks if the node has no children/
+            /// </summary>
             public bool IsLeaf => Right == null && Left == null;
 
             /// <summary>
