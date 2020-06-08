@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Task2
 {
@@ -81,61 +82,43 @@ namespace Task2
         public bool IsOnMap(int x, int y)
             => (x < height - 1 && y < width - 1);
 
+        
+
+        private void MoveHelper(int x, int y)
+        {
+            if (IsOnMap(playerPosition.Item1 + x, playerPosition.Item2 + y)
+                && map[playerPosition.Item1 + x, playerPosition.Item2 + y] != '#')
+            {
+                map[playerPosition.Item1, playerPosition.Item2] = ' ';
+                map[playerPosition.Item1 + x, playerPosition.Item2 + y] = '@';
+                playerPosition.Item1 += x;
+                playerPosition.Item2 += y;
+            }
+        }
+
         /// <summary>
         /// Moves player right if possible.
         /// </summary>
         public void MoveRight()
-        {
-            if (IsOnMap(playerPosition.Item1, playerPosition.Item2 + 1)
-                && map[playerPosition.Item1, playerPosition.Item2 + 1] != '#')
-            {
-                map[playerPosition.Item1, playerPosition.Item2] = ' ';
-                map[playerPosition.Item1, playerPosition.Item2 + 1] = '@';
-                playerPosition.Item2++;
-            }
-        }
+            => MoveHelper(0, 1);
 
         /// <summary>
         /// Moves player left if possible.
         /// </summary>
         public void MoveLeft()
-        {
-            if (IsOnMap(playerPosition.Item1, playerPosition.Item2 - 1)
-                && map[playerPosition.Item1, playerPosition.Item2 - 1] != '#')
-            {
-                map[playerPosition.Item1, playerPosition.Item2] = ' ';
-                map[playerPosition.Item1, playerPosition.Item2 - 1] = '@';
-                playerPosition.Item2--;
-            }
-        }
+            => MoveHelper(0, -1);
 
         /// <summary>
         /// Moves player down if possible.
         /// </summary>
         public void MoveDown()
-        {
-            if (IsOnMap(playerPosition.Item1 + 1, playerPosition.Item2)
-                && map[playerPosition.Item1 + 1, playerPosition.Item2] != '#')
-            {
-                map[playerPosition.Item1, playerPosition.Item2] = ' ';
-                map[playerPosition.Item1 + 1, playerPosition.Item2] = '@';
-                playerPosition.Item1++;
-            }
-        }
+            => MoveHelper(1, 0);
 
         /// <summary>
         /// Moves player up if possible.
         /// </summary>
         public void MoveUp()
-        {
-            if (IsOnMap(playerPosition.Item1 - 1, playerPosition.Item2)
-                && map[playerPosition.Item1 - 1, playerPosition.Item2] != '#')
-            {
-                map[playerPosition.Item1, playerPosition.Item2] = ' ';
-                map[playerPosition.Item1 - 1, playerPosition.Item2] = '@';
-                playerPosition.Item1--;
-            }
-        }
+            => MoveHelper(-1, 0);
 
         /// <summary>
         /// Prints the map.
