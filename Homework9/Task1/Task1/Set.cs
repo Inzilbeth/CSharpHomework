@@ -26,6 +26,12 @@ namespace Task1
             {
                 Value = value;
             }
+
+            /// <summary>
+            /// Initializes a new instance of the <see cref="TreeNode"/> class.
+            /// </summary>
+            /// <param name="value">Node value.</param>
+            /// <param name="parent">Node's parent.</param>
             public TreeNode(T value, TreeNode parent)
             {
                 Value = value;
@@ -190,6 +196,11 @@ namespace Task1
 
             foreach (var node in this)
             {
+                if(array.Length - arrayIndex < count)
+                {
+                    throw new ArgumentException();
+                }
+
                 array[arrayIndex] = node;
                 arrayIndex++;
             }
@@ -277,12 +288,7 @@ namespace Task1
                 }
             }
 
-            if (temporarySet.Count == count)
-            {
-                return true;
-            }
-
-            return false;
+            return temporarySet.Count == count;
         }
 
         public bool IsSupersetOf(IEnumerable<T> other)
@@ -324,7 +330,7 @@ namespace Task1
         public bool Remove(T item)
         {
             TreeNode currentNode = root;
-            TreeNode previusNode = null;
+            TreeNode previousNode = null;
             int previousComparison = 0;
             int comparison = 0;
 
@@ -335,29 +341,29 @@ namespace Task1
 
                 if (comparison < 0)
                 {
-                    previusNode = currentNode;
+                    previousNode = currentNode;
                     currentNode = currentNode.Left;
                 }
                 else if (comparison > 0)
                 {
-                    previusNode = currentNode;
+                    previousNode = currentNode;
                     currentNode = currentNode.Right;
                 }
                 else
                 {
                     count--;
 
-                    if (previusNode != null)
+                    if (previousNode != null)
                     {
                         if (currentNode.Left == null)
                         {
                             if (previousComparison < 0)
                             {
-                                previusNode.Left = currentNode.Right;
+                                previousNode.Left = currentNode.Right;
                             }
                             else
                             {
-                                previusNode.Right = currentNode.Right;
+                                previousNode.Right = currentNode.Right;
                             }
 
                             return true;
@@ -367,11 +373,11 @@ namespace Task1
 
                         if (previousComparison < 0)
                         {
-                            previusNode.Left = currentNode.Left;
+                            previousNode.Left = currentNode.Left;
                         }
                         else
                         {
-                            previusNode.Right = currentNode.Left;
+                            previousNode.Right = currentNode.Left;
                         }
 
                         currentNode = currentNode.Left;

@@ -21,7 +21,7 @@ namespace Task1
             intSet = new Set<int>(new CustomComparer());
             intSet.Add(555);
             Assert.IsTrue(intSet.Contains(555));
-            Assert.IsTrue(intSet.Count == 1);
+            Assert.AreEqual(intSet.Count, 1);
         }
 
         [Test]
