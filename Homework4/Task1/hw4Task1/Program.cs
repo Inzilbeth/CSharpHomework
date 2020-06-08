@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace Task1
 {
@@ -6,14 +7,18 @@ namespace Task1
     {
         static void Main(string[] args)
         {
+            Tree newTree;
             string path = "TreeTest.txt";
-            using (System.IO.StreamWriter writer = System.IO.File.CreateText(path))
+
+            using (StreamWriter writer = File.CreateText(path))
             {
                 writer.WriteLine("( * ( + 1 ( / 6 2) ) 7 )");
             }
-            System.IO.StreamReader reader = new System.IO.StreamReader(path);
 
-            var newTree = new Tree(reader);
+            using (StreamReader reader = new System.IO.StreamReader(path))
+            {
+                newTree = new Tree(reader);
+            }
 
             Console.WriteLine(newTree.Calculate());
             newTree.Print();
