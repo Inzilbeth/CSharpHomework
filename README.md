@@ -1,7 +1,3 @@
-# README
-
-# tmp
-
 # SPBU tasks
 
 ---
